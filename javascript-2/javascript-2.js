@@ -37,6 +37,10 @@ let foods = [
 
 //CODE HERE
 
+
+foods.forEach(function (calories, index, array) {
+  console.log(calories)
+});
 //////////////////////////////////PROBLEMS 2-4//////////////////////////////////
 /*
   For problems 2-4, you will be working with the products array below.
@@ -81,7 +85,9 @@ const products = [
 */
 
 //CODE HERE
-
+// let copyProducts = products.map(function (sale, index, array) {
+//   return sale * .25;
+// });
 ////////////////////PROBLEM 3////////////////////
 /*
   A customer has placed an order - they want one of every product that has blue on it. 
@@ -130,6 +136,7 @@ const shippingInfo = {
 */
 
 //CODE HERE
+const helensInfo = Object.assign(contactInfo, shippingInfo);
 
 ////////////////////PROBLEM 6////////////////////
 /*
@@ -139,14 +146,16 @@ const shippingInfo = {
 */
 
 //CODE HERE
+const ellensInfo = { ...helensInfo }
+const name = 'Ellen'
 
 ////////////////////PROBLEM 7////////////////////
 /* 
-  Save Ellen's email to a new variable using destructuring.
+Save Ellen's email to a new variable using destructuring.
 */
 
 //CODE HERE
-
+const { email } = ellensInfo
 ////////////////////PROBLEM 8////////////////////
 /*
   In a single expression (one line), save the zip code and state 
@@ -154,7 +163,7 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+const { zipCode, state } = shippingInfo
 //////////////////////////////////PROBLEMS 9-11//////////////////////////////////
 /*
   Use the userInfo object below to complete problems 9-11.
@@ -251,7 +260,33 @@ const userInfo = {
 */
 
 //CODE HERE
-
+const person = {
+  name: 'Ryan',
+  age: 35,
+  jobs: ['construction', 'web developer', 'production'],
+  birthday: function (age) {
+    age = this.age + 1
+  },
+  favorites: {
+    color: 'green',
+    number: 13,
+    book: 'Percy Jackson',
+  },
+  kids: [
+    {
+      name: 'Mya',
+      age: 6
+    },
+    {
+      name: 'Coby',
+      age: 8
+    },
+    {
+      name: 'Ellie',
+      age: 4
+    }
+  ]
+}
 //////////////////////////////////PROBLEMS 13-14//////////////////////////////////
 /*
   For the last two problems, you will be determining the 
@@ -276,7 +311,7 @@ const workout = {
 //let context1 = myFunc
 //let context1 = window
 //let context1 = global
-// let context1 = workout
+let context1 = workout
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -289,6 +324,6 @@ function myFunc() {
 }
 
 //let context2 = myFunc
-// let context2 = window
+let context2 = window
 //let context2 = global
 //let context2 = workout

@@ -38,9 +38,10 @@ let foods = [
 //CODE HERE
 
 
-foods.forEach(function (calories, index, array) {
-  console.log(calories)
-});
+foods.forEach(function (elem) {
+  elem.calories = (elem.carbs * 4) + (elem.protein * 4) + (elem.fat * 9)
+})
+
 //////////////////////////////////PROBLEMS 2-4//////////////////////////////////
 /*
   For problems 2-4, you will be working with the products array below.
@@ -85,9 +86,10 @@ const products = [
 */
 
 //CODE HERE
-// let copyProducts = products.map(function (sale, index, array) {
-//   return sale * .25;
-// });
+let saleProducts = products.map(function (ele) {
+  ele.price * .75
+  return ele
+});
 ////////////////////PROBLEM 3////////////////////
 /*
   A customer has placed an order - they want one of every product that has blue on it. 
@@ -97,7 +99,7 @@ const products = [
 */
 
 //CODE HERE
-
+let blueProducts = saleProducts.filter(saleProducts => saleProducts.color.includes('blue'))
 ////////////////////PROBLEM 4////////////////////
 /*
   Now you'd like to get them their order total. 
@@ -106,7 +108,9 @@ const products = [
 */
 
 //CODE HERE
-
+let orderTotal = blueProducts.reduce((acc, curr) => {
+  return acc + curr.price
+}, 0)
 //////////////////////////////////PROBLEMS 5-8//////////////////////////////////
 /*
   For these problems we will be using the objects below, contactInfo and shippingInfo,
@@ -136,7 +140,7 @@ const shippingInfo = {
 */
 
 //CODE HERE
-const helensInfo = Object.assign(contactInfo, shippingInfo);
+let helensInfo = Object.assign(contactInfo, shippingInfo);
 
 ////////////////////PROBLEM 6////////////////////
 /*
@@ -146,8 +150,9 @@ const helensInfo = Object.assign(contactInfo, shippingInfo);
 */
 
 //CODE HERE
-const ellensInfo = { ...helensInfo }
-const name = 'Ellen'
+let ellensInfo = { ...helensInfo }
+ellensInfo.name = 'Ellen'
+ellensInfo.email = 'ellen@email.com'
 
 ////////////////////PROBLEM 7////////////////////
 /* 
@@ -225,7 +230,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+shouldAlert = userInfo.settings.alerts
 ////////////////////PROBLEM 10////////////////////
 /*
   Set the value of topic below to the last item in gn@rly_c0der_007's topics array
@@ -233,7 +238,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+topic = userInfo.topics[3]
 ////////////////////PROBLEM 11////////////////////
 /*
   Set the value of commenterId below to the userId of the first response to 
@@ -241,7 +246,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+commenterId = userInfo.comments[0].comment[1]
 ////////////////////PROBLEM 12////////////////////
 /*
   Create an object called 'person' that has the following properties. 
@@ -264,8 +269,8 @@ const person = {
   name: 'Ryan',
   age: 35,
   jobs: ['construction', 'web developer', 'production'],
-  birthday: function (age) {
-    age = this.age + 1
+  birthday: function () {
+    this.age += 1
   },
   favorites: {
     color: 'green',

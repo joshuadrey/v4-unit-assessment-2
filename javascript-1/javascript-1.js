@@ -122,8 +122,10 @@ const shapes = {
 
 //CODE HERE
 
-for (let key in shapes) {
-    shapes[key] % 2 === 0 ? shapes[key] : 0
+for (let prop in shapes) {
+    if (shapes[prop] % 2 === 1) {
+        delete shapes[prop]
+    }
 }
 
 
@@ -169,12 +171,14 @@ const classes = [
 */
 
 //CODE HERE
-// for (let i = 0; i < classes.length; i++) {
-//     for (let key in classes) {
-//         classes[key] === true ? false : false
-//     }
-//     return classes
-// }
+for (let i = 0; i < classes.length; i++) {
+    for (let key in classes[i]) {
+        if (classes[i][key] === true) {
+            classes[i][key] = false
+        }
+    }
+
+}
 
 ////////////////////PROBLEM 10////////////////////
 /*
@@ -191,11 +195,11 @@ let pairsArray = []
 
 //CODE HERE
 // for (let i = o; i < lettersToPair.length; i++) {
-//     for (let j = 0; j < lettersToPair.length; j++) {
+//     for (let j = 0; j < lettersToPair.length; j--) {
 //         if (lettersToPair[i] === lettersToPair[j]) {
-
-//         } else {
-
+//             pair = [];
+//             pair.push([i, j])
+//             pairsArray.push(pair)
 //         }
 //     }
 // }
@@ -270,7 +274,7 @@ const teachTrick = function (trick) {
 */
 
 //CODE HERE
-const teachStay = teachTrick.bind(fido, 'stay')
+let teachStay = teachTrick.bind(fido, 'stay')
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -339,6 +343,8 @@ let phone3 = new Phone('Samsung', 'samsung', 300, 'blue', false)
 //CODE HERE
 
 Phone.prototype.sell = function () {
-    Phone.sold === false ? true : true;
-    return (`${this.brand} ${this.model} has been sold.`)
+    if (Phone.sold === false) {
+        let(Phone.sold = true)
+        return
+    }
 }
